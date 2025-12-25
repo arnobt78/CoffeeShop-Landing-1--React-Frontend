@@ -1,11 +1,35 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/**
+ * Global Styles
+ * 
+ * This file contains global CSS styles using Tailwind CSS directives.
+ * Tailwind uses a utility-first approach where styles are applied via classes.
+ * 
+ * @tailwind directives:
+ * - base: Tailwind's base/reset styles
+ * - components: Component-level classes (reusable patterns)
+ * - utilities: Utility classes (margins, padding, colors, etc.)
+ */
 
+@tailwind base;      /* Base styles and CSS reset */
+@tailwind components; /* Component classes */
+@tailwind utilities;  /* Utility classes */
+
+/**
+ * @layer base - Base Layer
+ * 
+ * Styles in the base layer apply to raw HTML elements and have lower specificity.
+ * These are foundational styles that apply globally.
+ */
 @layer base {
+  /* Global body styles - applied to entire site */
   body {
     @apply font-secondary text-secondary leading-relaxed;
+    /* font-secondary: Open Sans (body font)
+       text-secondary: Gray text color (#787f8a)
+       leading-relaxed: Comfortable line height */
   }
+  
+  /* All heading elements use primary font and color */
   h1,
   h2,
   h3,
@@ -13,23 +37,54 @@
   h5,
   h6 {
     @apply text-primary font-primary;
+    /* text-primary: Dark color (#100e0e)
+       font-primary: Cormorant Upright (heading font) */
   }
+  
+  /* Custom heading class .h1 - Large display heading */
   .h1 {
     @apply text-[70px] xl:text-[150px] leading-[1.1] font-semibold;
+    /* Responsive text size: 70px on mobile, 150px on xl screens
+       leading-[1.1]: Tight line height for large text
+       font-semibold: Medium font weight */
   }
+  
+  /* Custom heading class .h2 - Section headings */
   .h2 {
     @apply text-[56px] xl:text-[80px] leading-[1.2] font-bold;
+    /* Responsive: 56px mobile, 80px xl screens
+       leading-[1.2]: Slightly more spacing than h1 */
   }
+  
+  /* .lead class - For lead/emphasis paragraphs */
   .lead {
-    @apply text-lg;
+    @apply text-lg; /* Larger text size for emphasis */
   }
+  
+  /* .btn class - Reusable button styles */
   .btn {
     @apply min-w-[156px] h-[54px] px-6 bg-accent hover:bg-accent-hover text-primary text-[13px] uppercase font-semibold tracking-[.15em] transition-all;
+    /* min-w: Minimum button width for consistency
+       h-[54px]: Fixed button height
+       px-6: Horizontal padding
+       bg-accent: Background color (#c7a17a)
+       hover:bg-accent-hover: Darker on hover (#a08161)
+       text-[13px]: Small uppercase text
+       tracking-[.15em]: Letter spacing for readability
+       transition-all: Smooth transitions on hover */
   }
 }
 
-/* swiper navigation arrow styles */
+/**
+ * Swiper Navigation Arrow Styles
+ * 
+ * Custom styling for Swiper.js carousel navigation arrows.
+ * Swiper automatically adds ::after pseudo-elements for arrow icons.
+ */
 .swiper-button-next::after,
 .swiper-button-prev::after {
   @apply text-primary !text-[2rem];
+  /* text-primary: Dark color for arrows
+     !text-[2rem]: Important flag to override Swiper defaults
+     2rem: 32px arrow icon size */
 }
